@@ -7,6 +7,7 @@ using TMPro;
 public class ShapeSpawner : MonoBehaviour
 {
     public CurrencyManager currencyManager;
+    public AudioManager audioManager;
     private GameManager gameManager;
     public GameObject trianglePrefab;
     public GameObject squarePrefab;
@@ -46,6 +47,7 @@ public class ShapeSpawner : MonoBehaviour
                         currencyManager.ChangeCurrency1(-cost);
                         currencyManager.UpdateCurrencyText();
                         Instantiate(selectedShape, mouseWorldPosition, Quaternion.identity);
+                        audioManager.PlayShapeSpawn();
                     }
                 }
                 else if (selectedShape.CompareTag("Player2"))
@@ -55,6 +57,7 @@ public class ShapeSpawner : MonoBehaviour
                         currencyManager.ChangeCurrency2(-cost);
                         currencyManager.UpdateCurrencyText();
                         Instantiate(selectedShape, mouseWorldPosition, Quaternion.identity);
+                        audioManager.PlayShapeSpawn();
                     }
                 }
             }
@@ -78,11 +81,11 @@ public class ShapeSpawner : MonoBehaviour
                 shapeToSelect = squarePrefab;
                 break;
             case 3: // Diamond
-                cost = 4;
+                cost = 5;
                 shapeToSelect = diamondPrefab;
                 break;
             case 4: // Pentagon
-                cost = 5;
+                cost = 1;
                 shapeToSelect = capsulePrefab;
                 break;
             case 5: // Hexagon

@@ -15,6 +15,7 @@ public class ShapeController : MonoBehaviour
 
     private ScoreManager scoreManager;
     private CurrencyManager currencyManager;
+    private AudioManager audioManager;
 
     private Rigidbody2D rb;
     private TextMeshPro hpText;
@@ -29,6 +30,8 @@ public class ShapeController : MonoBehaviour
         bumpForce = Random.Range(1f, 2f);
         scoreManager = FindObjectOfType<ScoreManager>();
         currencyManager = FindObjectOfType<CurrencyManager>();
+        audioManager = FindObjectOfType<AudioManager>();
+
 
         rb = GetComponent<Rigidbody2D>();
 
@@ -55,6 +58,7 @@ public class ShapeController : MonoBehaviour
     {
         if (hp <= 0)
         {
+            audioManager.PlayShapeDestruction();
             Destroy(gameObject);//dont destroy, replace self with shape hit by and reset hp to new shape hp. 
         }
         if (!isBumped)
@@ -112,6 +116,7 @@ public class ShapeController : MonoBehaviour
             collisionShapeController.hp -= 1;
             UpdateHpText();
             StartCoroutine(BumpBack());
+            audioManager.PlayShapeCollision();
 
             if (currentHp <= 0)
             {
@@ -131,6 +136,7 @@ public class ShapeController : MonoBehaviour
                 {
                     Instantiate(collidedObject, transform.position, Quaternion.identity);
                 }
+                audioManager.PlayShapeDestruction();
                 Destroy(gameObject);
             }
         }

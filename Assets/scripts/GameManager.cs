@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
 {
     public ScoreManager scoreManager;
     public CurrencyManager currencyManager;
+    public AudioManager audioManager;
     public float gameTime = 120f;
     public TextMeshProUGUI timerText;
     public GameObject player1VictoryText;
@@ -61,6 +62,8 @@ public class GameManager : MonoBehaviour
         }
 
         tryAgainButton.SetActive(true);
+        audioManager.SetGameOver();
+
     }
 
     public void TryAgain()

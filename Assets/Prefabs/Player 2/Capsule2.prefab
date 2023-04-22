@@ -143,7 +143,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 2
-  speed: 1
+  speed: 3
   bumpForce: 1
   hpTextPrefab: {fileID: 242656071148184592, guid: 2436c4e02d90f894d9063272f28ec805, type: 3}
   sortingOrder: 0
